@@ -26,8 +26,8 @@ $(function(){
       };
     
       $('.create-column')
-      .click(function(){
-        board.createColumn(new Column(prompt('Wpisz nazwę kolumny')));
+      .on("click", function(){
+        board.createColumn(new Column(prompt('Enter column name ')));
       });
     
       function Column(name) {
@@ -45,12 +45,12 @@ $(function(){
           var columnDelete = $('<button class="btn-delete">x</button>');
           var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
     
-          columnDelete.click(function() {
+          columnDelete.on("click", function() {
             self.deleteColumn();
           });
-          columnAddCard.click(function(event) {
+          columnAddCard.on("click", function(event) {
             event.preventDefault();
-            self.createCard(new Card(prompt("Wpisz nazwę karty")));
+            self.createCard(new Card(prompt("Enter the name of the card")));
           });
     
           column.append(columnTitle)
@@ -80,7 +80,7 @@ $(function(){
           var card = $('<li class="card"></li>');
           var cardDeleteBtn = $('<button class="btn-delete">x</button>');
           var cardDescription = $('<p class="card-description"></p>');
-          cardDeleteBtn.click(function(){
+          cardDeleteBtn.on("click", function(){
             self.removeCard();
           });
           card.append(cardDeleteBtn);
@@ -95,17 +95,16 @@ $(function(){
         }
       }
     
-      var todoColumn = new Column('Do zrobienia');
-      var doingColumn = new Column('W trakcie');
-      var doneColumn = new Column('Skończone');
+      var todoColumn = new Column('To do');
+      var doingColumn = new Column('During');
+      var doneColumn = new Column('Finished');
     
       board.createColumn(todoColumn);
       board.createColumn(doingColumn);
       board.createColumn(doneColumn);
     
-      var card1 = new Card('Nowe zadanie');
-      var card2 = new Card('stworzyc tablice kanban');
-    
+      var card1 = new Card('New task');
+      var card2 = new Card('create kanban boards');
       todoColumn.createCard(card1);
       doingColumn.createCard(card2);
     })
