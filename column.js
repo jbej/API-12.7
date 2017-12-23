@@ -13,7 +13,7 @@ function Column(id, name) {
 		var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
 
 		$columnDelete.on("click", function() {
-            self.removeColumn();
+            self.deleteColumn();
 		});
 		
 		columnAddCard.on("click", function(event) {
